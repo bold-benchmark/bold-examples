@@ -1,0 +1,3 @@
+[submodule "OpenSmartHome/OpenSmartHomeData"]
+	path = osh/OpenSmartHomeData
+	url = git@github.com:TechnicalBuildingSystems/OpenSmartHomeData.git
