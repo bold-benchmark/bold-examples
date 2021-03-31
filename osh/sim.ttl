@@ -1,0 +1,8 @@
+@prefix : <http://ti.rw.fau.de/sim#>  .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://127.0.1.1:8080/> .
+
+<sim> :initialTime "2017-03-09T00:00:00+01:00"^^xsd:dateTime ;
+      :timeslotDuration 3600000 ; # 1 hour
+      #:iterations 1800 . # 2,5 months
+      :iterations 2 .

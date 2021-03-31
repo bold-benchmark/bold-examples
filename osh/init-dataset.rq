@@ -1,2 +1,55 @@
-INSERT {}
-WHERE {}
+PREFIX om: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
+PREFIX osh: <https://w3id.org/ibp/osh/OpenSmartHomeDataSet#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX qudt: <http://qudt.org/1.1/schema/qudt#>
+PREFIX qudtunit: <http://qudt.org/1.1/vocab/unit#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+    ?o sosa:hasFeatureOfInterest ?foi ;
+       sosa:observedProperty ?prop ;
+       sosa:madeBySensor ?sensor .
+} INSERT {
+    ?o sosa:hasFeatureOfInterest ?foiURI ;
+       sosa:observedProperty ?propURI ;
+       sosa:madeBySensor ?sensorURI .
+
+    GRAPH ?foiURI {
+        ?foiURI a sosa:FeatureOfInterest .
+    }
+
+    GRAPH ?propURI {
+        ?propURI a sosa:ObservableProperty ;
+                 sosa:madeObservation ?obsURI .
+    }
+
+    GRAPH ?obsURI {
+    	?obsURI a sosa:Observation ;
+    	        sosa:hasFeatureOfInterest ?foiURI ;
+    	        sosa:observedProperty ?propURI ;
+    	        sosa:madeBySensor ?sensorURI .
+    }
+
+    GRAPH ?sensorURI {
+        ?sensorURI a sosa:Sensor .
+    }
+} WHERE {
+    ?o a sosa:Observation ;
+       sosa:hasFeatureOfInterest ?foi ;
+       sosa:observedProperty ?prop ;
+       sosa:madeBySensor ?sensor .
+
+    BIND (strafter(str(?sensor), "#") AS ?foiName)
+    BIND (strafter(str(?prop), "#") AS ?propName)
+    BIND (strafter(str(?foi), "#") AS ?sensorName)
+
+    BIND (uri(?foiName) AS ?foiURI)
+    BIND (uri(?propName) AS ?propURI)
+    BIND (uri(concat(?propName, "/latest")) AS ?obsURI)
+    BIND (uri(?sensorName) AS ?sensorURI)
+}

@@ -1,2 +1,71 @@
-INSERT {}
-WHERE {}
+PREFIX sim: <http://ti.rw.fau.de/sim#>
+PREFIX om: <http://www.ontology-of-units-of-measure.org/resource/om-2/>
+PREFIX osh: <https://w3id.org/ibp/osh/OpenSmartHomeDataSet#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX qudt: <http://qudt.org/1.1/schema/qudt#>
+PREFIX qudtunit: <http://qudt.org/1.1/vocab/unit#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+	GRAPH ?obsURI {
+		?obsURI sosa:resultTime ?previousTime ;
+                sosa:hasResult ?previousRes .
+
+		?previousRes a om:Measure ;
+			 om:hasNumericalValue ?previousVal ;
+			 om:hasUnit ?previousUnit .
+	}
+}
+INSERT {
+	GRAPH ?obsURI {
+		?obsURI sosa:resultTime ?next ;
+		        sosa:hasResult ?nextRes .
+
+		?nextRes a om:Measure ;
+			     om:hasNumericalValue ?nextVal ;
+			     om:hasUnit ?nextUnit .
+	}
+} WHERE {
+	BIND ("2017-03-09T00:58:47+01:00"^^xsd:dateTime AS ?next)
+
+    ?nextObs a sosa:Observation ;
+             sosa:observedProperty ?prop ;
+             sosa:resultTime ?next ;
+             sosa:hasResult ?nextRes .
+
+    ?nextRes a om:Measure ;
+             om:hasNumericalValue ?nextVal ;
+             om:hasUnit ?nextUnit .
+
+	GRAPH ?obsURI {
+		?obsURI a sosa:Observation ;
+			    sosa:observedProperty ?prop .
+	}
+
+   OPTIONAL {
+    	# no observation made if first iteration
+    	GRAPH ?obsURI {
+    		?obsURI sosa:resultTime ?previousTime ;
+    		        sosa:hasResult ?previousRes .
+
+    		?previousRes a om:Measure ;
+    		             om:hasNumericalValue ?previousVal ;
+    		             om:hasUnit ?previousUnit .
+    	}
+   }
+
+    <sim> sim:currentTime ?time ;
+          sim:initialTime ?initTime .
+
+    ?time time:inXSDDateTimeStamp ?t .
+
+    BIND (if(bound(?previousTime), ?previousTime, ?initTime) AS ?previous)
+
+    FILTER (?previous < ?next && ?next <= ?t)
+}
