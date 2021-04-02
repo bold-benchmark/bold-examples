@@ -32,7 +32,10 @@ DELETE {
     	?obsURI a sosa:Observation ;
     	        sosa:hasFeatureOfInterest ?foiURI ;
     	        sosa:observedProperty ?propURI ;
-    	        sosa:madeBySensor ?sensorURI .
+    	        sosa:madeBySensor ?sensorURI ;
+    	        sosa:hasResult ?resURI .
+
+    	?resURI a om:Measure .
     }
 
     GRAPH ?sensorURI {
@@ -51,5 +54,6 @@ DELETE {
     BIND (uri(?foiName) AS ?foiURI)
     BIND (uri(?propName) AS ?propURI)
     BIND (uri(concat(?propName, "/latest")) AS ?obsURI)
+    BIND (uri(concat(str(?obsURI), "#result")) AS ?resURI)
     BIND (uri(?sensorName) AS ?sensorURI)
 }

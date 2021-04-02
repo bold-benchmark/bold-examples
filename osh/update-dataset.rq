@@ -14,30 +14,36 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 DELETE {
 	GRAPH ?obsURI {
-		?obsURI sosa:resultTime ?previousTime ;
-                sosa:hasResult ?previousRes .
+		?obsURI sosa:resultTime ?previous .
 
-		?previousRes a om:Measure ;
-			 om:hasNumericalValue ?previousVal ;
-			 om:hasUnit ?previousUnit .
+		?resURI om:hasNumericalValue ?previousVal ;
+			    om:hasUnit ?previousUnit .
 	}
-}
-INSERT {
+} INSERT {
 	GRAPH ?obsURI {
-		?obsURI sosa:resultTime ?next ;
-		        sosa:hasResult ?nextRes .
+		?obsURI sosa:resultTime ?next .
 
-		?nextRes a om:Measure ;
-			     om:hasNumericalValue ?nextVal ;
-			     om:hasUnit ?nextUnit .
+		?resURI om:hasNumericalValue ?nextVal ;
+			    om:hasUnit ?nextUnit .
 	}
 } WHERE {
-	BIND ("2017-03-09T00:58:47+01:00"^^xsd:dateTime AS ?next)
+    {
+    	SELECT ?prop ?nextObs ?next WHERE {
+    	    ?nextObs a sosa:Observation ;
+    	             sosa:observedProperty ?prop ;
+    	             sosa:resultTime ?next .
 
-    ?nextObs a sosa:Observation ;
-             sosa:observedProperty ?prop ;
-             sosa:resultTime ?next ;
-             sosa:hasResult ?nextRes .
+            <sim> sim:currentTime ?time ;
+                  sim:initialTime ?initTime .
+
+            ?time time:inXSDDateTimeStamp ?t .
+
+            # FIXME doesn't work when comparing dateTimes? Report to RDF4J?
+            FILTER (str(?next) <= str(?t))
+    	} ORDER BY desc(?next) LIMIT 1
+    }
+
+    ?nextObs sosa:hasResult ?nextRes .
 
     ?nextRes a om:Measure ;
              om:hasNumericalValue ?nextVal ;
@@ -45,27 +51,21 @@ INSERT {
 
 	GRAPH ?obsURI {
 		?obsURI a sosa:Observation ;
-			    sosa:observedProperty ?prop .
+			    sosa:observedProperty ?prop ;
+			    sosa:hasResult ?resURI .
 	}
 
-   OPTIONAL {
-    	# no observation made if first iteration
-    	GRAPH ?obsURI {
-    		?obsURI sosa:resultTime ?previousTime ;
-    		        sosa:hasResult ?previousRes .
+    OPTIONAL {
+    	# no previous observation if first iteration
+        GRAPH ?obsURI {
+            ?obsURI sosa:resultTime ?previous .
 
-    		?previousRes a om:Measure ;
-    		             om:hasNumericalValue ?previousVal ;
-    		             om:hasUnit ?previousUnit .
-    	}
+            ?resURI a om:Measure ;
+                    om:hasNumericalValue ?previousVal ;
+                    om:hasUnit ?previousUnit .
+        }
    }
 
-    <sim> sim:currentTime ?time ;
-          sim:initialTime ?initTime .
-
-    ?time time:inXSDDateTimeStamp ?t .
-
-    BIND (if(bound(?previousTime), ?previousTime, ?initTime) AS ?previous)
-
-    FILTER (?previous < ?next && ?next <= ?t)
+    #BIND (if(bound(?previousTime), ?previousTime, ?initTime) AS ?previous)
+    #FILTER (str(?previous) < str(?next) && str(?next) <= str(?t))
 }

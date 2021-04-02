@@ -4,5 +4,4 @@
 
 <sim> :initialTime "2017-03-09T00:00:00+01:00"^^xsd:dateTime ;
       :timeslotDuration 3600000 ; # 1 hour
-      #:iterations 1800 . # 2,5 months
-      :iterations 2 .
+      :iterations 1800 . # 2,5 months
