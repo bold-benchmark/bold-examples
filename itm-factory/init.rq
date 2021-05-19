@@ -1,16 +1,15 @@
+PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX ua: <http://example.org/opcua#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-DELETE {
-    ?s ?p ?o .
-} INSERT {
-    GRAPH ?s {
-        ?s ?p ?o .
+INSERT {
+    GRAPH ?p {
+        ?p a sosa:ObservableProperty, ssn:Property, ua:Variable .
     }
 } WHERE {
-    ?s ?p ?o .
-    # TODO if blank nodes, go one level below
+    ?system ssn:hasProperty ?p .
 };
 
 INSERT {
