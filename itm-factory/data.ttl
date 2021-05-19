@@ -1,0 +1,56 @@
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix schema: <http://schema.org/> .
+@prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
+@prefix ua: <http://example.org/opcua#> . # TODO replace with an ontology derived from OPC-UA companion standards
+
+# TODO align with https://ci.mines-stetienne.fr/kg/itmfactory/dx10
+
+<DX10> a sosa:Platform ;
+       sosa:hosts <DX10/DosaxeSilo> ,
+                  <DX10/DosaxeConveyor> ,
+                  <DX10/DosaxeEmergencyStopButton> ,
+                  <DX10/DosaxeSignalLightColumn> .
+
+<DX10/DosaxeSilo> a ssn:System ;
+                  ssn:hasSubSystem <DX10/DosaxeSilo/SiloLevelIndicator> ,
+                                   <DX10/DosaxeSilo/SiloLimitSwitch> ,
+                                   <DX10/DosaxeSilo/SiloMotor> ,
+                                   <DX10/DosaxeSilo/SiloStatusIndicator> .
+
+<DX10/DosaxeSilo/SiloLevelIndicator> a ssn:System, ua:GenericSensor ;
+                                     ssn:hasProperty <DX10/DosaxeSilo/SiloLevelIndicator/PresenceDetected> .
+
+<DX10/DosaxeSilo/SiloLimitSwitch> a ssn:System, ua:GenericSensor ;
+                                  ssn:hasProperty <DX10/DosaxeSilo/SiloLimitSwitch/SwitchContactOn> .
+
+<DX10/DosaxeSilo/SiloMotor> a ssn:System, ua:GenericMotor ;
+                            ssn:hasProperty <DX10/DosaxeSilo/SiloMotor/Direction> ,
+                                            <DX10/DosaxeSilo/SiloMotor/Speed> ,
+                                            <DX10/DosaxeSilo/SiloMotor/State> .
+
+<DX10/DosaxeSilo/SiloStatusIndicator> a ssn:System, ua:GenericSensor ;
+                                      ssn:hasProperty <DX10/DosaxeSilo/SiloStatusIndicator/PresenceDetected> .
+
+<DX10/DosaxeConveyor> a ssn:System, ua:BeltConveyor ; # TODO see AML library that includes BeltConveyor
+                      schema:width "80 cm"^^cdt:ucum ;
+                      ssn:hasSubSystem <DX10/DosaxeConveyor/ConveyorMotor> ,
+                                       <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> .
+
+<DX10/DosaxeConveyor/ConveyorMotor> a ssn:System, ua:GenericMotor ;
+                                    ssn:hasProperty <DX10/DosaxeConveyor/ConveyorMotor/Direction> ,
+                                                    <DX10/DosaxeConveyor/ConveyorMotor/Speed> ,
+                                                    <DX10/DosaxeConveyor/ConveyorMotor/State> .
+
+<DX10/DosaxeConveyor/DownStreamPresenceIRSensor> a ssn:System, ua:IRSensor ;
+                                                 ssn:hasProperty <DX10/DosaxeConveyor/DownStreamPresenceIRSensor/PresenceDetected> .
+
+<DX10/DosaxeEmergencyStopButton> a ssn:System, ua:PushButton ;
+                                 ssn:hasProperty <DX10/DosaxeEmergencyStopButton/PushedButton> .
+
+<DX10/DosaxeSignalLightColumn> a ssn:System, ua:SignalLightColumn ;
+                          ssn:hasProperty <DX10/DosaxeSignalLightColumn/FixedLight> ,
+                                          <DX10/DosaxeSignalLightColumnGreen> ,
+                                          <DX10/DosaxeSignalLightColumn/Red> ,
+                                          <DX10/DosaxeSignalLightColumn/White> .
+

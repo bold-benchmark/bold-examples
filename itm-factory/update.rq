@@ -1,0 +1,42 @@
+PREFIX ua: <http://example.org/opcua#>
+PREFIX schema: <http://schema.org/>
+PREFIX s4inma: <https://saref.etsi.org/saref4inma/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sim: <http://ti.rw.fau.de/sim#>
+
+# conveyor: if started, any object on it moves at the given speed
+
+DELETE {
+    ?loc schema:longitude ?x .
+} INSERT {
+    ?loc schema:longitude ?xp .
+} WHERE {
+    ?conveyor a ua:BeltConveyor ;
+              schema:width ?ucumWidth ;
+              ssn:hasSubSystem ?motor .
+
+    ?motor a ua:Motor ;
+           ssn:hasProperty ?speed .
+
+    ?speed rdfs:seeAlso ?var .
+
+    ?var ua:value ?v .
+
+    <sim> sim:timeslotDuration ?dt .
+
+    # TODO not necessary
+    BIND (xsd:double(strbefore(?ucumWidth, " ")) AS ?width)
+
+    ?item a s4inma:Item ;
+          schema:geoTouches ?conveyor ;
+          schema:location ?loc .
+
+    ?loc schema:longitude ?x .
+
+    BIND (?x + (?v * ?dt) AS ?xp)
+}
+
+# action to start/stop the motor: POST to action and creates new resource
+# TODO to return in Location header?
+
+# silo: level decreases if motor started?
