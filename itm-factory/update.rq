@@ -1,5 +1,6 @@
 PREFIX ua: <http://example.org/opcua#>
 PREFIX schema: <http://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
 PREFIX s4inma: <https://saref.etsi.org/saref4inma/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sim: <http://ti.rw.fau.de/sim#>
