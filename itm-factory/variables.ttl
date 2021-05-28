@@ -1,0 +1,582 @@
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix iter:  <http://w3id.org/sparql-generate/iter/> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jsonschema: <https://www.w3.org/2019/wot/json-schema#> .
+@prefix ssn:   <http://www.w3.org/ns/ssn/> .
+@prefix sosa:  <http://www.w3.org/ns/sosa/> .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur d'arrêt en h" ;
+  dct:identifier  "%MW138"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front Start Table" ;
+  dct:identifier  "%M310.7"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "AlwaysFALSE" ;
+  dct:identifier  "%M50.3"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Axe_Remplissage_Impulsion" ;
+  dct:identifier  "%Q0.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front_Absence_Produit" ;
+  dct:identifier  "%M6.7"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Etape Marche" ;
+  dct:identifier  "%M3.0"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur de marche en h" ;
+  dct:identifier  "%MW132"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Memo 2 ouverture trappe" ;
+  dct:identifier  "%MD52"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "FirstScan" ;
+  dct:identifier  "%M50.0"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "N d'Arret" ;
+  dct:identifier  "%MW252"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Visu_BP_Arrêt" ;
+  dct:identifier  "%M6.4"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Validation calcul" ;
+  dct:identifier  "%M4.3"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Etape Arrêt AU" ;
+  dct:identifier  "%M3.1"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Set Manu +" ;
+  dct:identifier  "%M4.5"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front_Comptage" ;
+  dct:identifier  "%M300.1"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Set_Manque_Produit" ;
+  dct:identifier  "%M6.6"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Duree_Arrets_Cumules" ;
+  dct:identifier  "%MW256"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Axe sous puissance" ;
+  dct:identifier  "%I0.1"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Visu_BP_Initialisation" ;
+  dct:identifier  "%M6.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_10Hz" ;
+  dct:identifier  "%M20.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Came de prise d'origine" ;
+  dct:identifier  "%I0.4"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Etape conduite" ;
+  dct:identifier  "%MW10"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Num_message_pupitre" ;
+  dct:identifier  "%MW240"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Set transfert position" ;
+  dct:identifier  "%M4.1"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP Initialisaton" ;
+  dct:identifier  "%M5.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Electro Aimant" ;
+  dct:identifier  "%Q0.5"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Axe_Remplissage_Sens" ;
+  dct:identifier  "%Q0.1"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur horaire en min" ;
+  dct:identifier  "%MW142"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Coeff_GV_Convoyeur" ;
+  dct:identifier  "%MD280"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front sortie manu" ;
+  dct:identifier  "%M308.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Visu_BP_Paramètre" ;
+  dct:identifier  "%M6.5"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Visu_BP_Manu" ;
+  dct:identifier  "%M6.3"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Ajust centrage" ;
+  dct:identifier  "%MD68"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_0.625Hz" ;
+  dct:identifier  "%M20.6"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Memo Stop" ;
+  dct:identifier  "%M14.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front arret pause" ;
+  dct:identifier  "%M310.4"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front 1 KM1" ;
+  dct:identifier  "%M306.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Visu_BP_Caché" ;
+  dct:identifier  "%M8.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP Manu" ;
+  dct:identifier  "%M5.3"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP_Sortie_Manu" ;
+  dct:identifier  "%M5.1"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Font_Defaut_V90" ;
+  dct:identifier  "%M310.6"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "RAZ Compteur produits" ;
+  dct:identifier  "%M34.4"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Temps Remplissage" ;
+  dct:identifier  "%MD100"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Défaut USS" ;
+  dct:identifier  "%M3.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Presence Produit" ;
+  dct:identifier  "%I0.5"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Axe_Remplissage_Position_int" ;
+  dct:identifier  "%MW220"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP Marche" ;
+  dct:identifier  "%M5.0"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Clock_Byte" ;
+  dct:identifier  "%MB20"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Mémo défaut USS" ;
+  dct:identifier  "%M3.3"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Vitesse Jog" ;
+  dct:identifier  "%MD70"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_5Hz" ;
+  dct:identifier  "%M20.1"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur d'arrêt en min" ;
+  dct:identifier  "%MW136"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur d'arrêt en s" ;
+  dct:identifier  "%MW134"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front pause" ;
+  dct:identifier  "%M310.3"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front 2 sens axe" ;
+  dct:identifier  "%M304.0"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Coeff_PV_Convoyeur" ;
+  dct:identifier  "%MD284"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP Manu -" ;
+  dct:identifier  "%M4.7"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Memo 1 ouverture trappe" ;
+  dct:identifier  "%MD44"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur_Horaire" ;
+  dct:identifier  "%MD258"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Axe sens négatif" ;
+  dct:identifier  "%M4.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Tag_6" ;
+  dct:identifier  "%M310.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Pause" ;
+  dct:identifier  "%M310.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front memo accu" ;
+  dct:identifier  "%M310.1"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Sortie manu" ;
+  dct:identifier  "%M4.4"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Mise sous puissance" ;
+  dct:identifier  "%Q0.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front sens axe" ;
+  dct:identifier  "%M302.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Verine Verte" ;
+  dct:identifier  "%Q0.4"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur horaire en s" ;
+  dct:identifier  "%MW140"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "DiagStatusUpdate" ;
+  dct:identifier  "%M50.1"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front présence pot" ;
+  dct:identifier  "%M300.0"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Glissement V20" ;
+  dct:identifier  "%MD60"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP Stop" ;
+  dct:identifier  "%M5.5"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "RAZ Compteurs Horaire" ;
+  dct:identifier  "%M34.6"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP Reset Compteur" ;
+  dct:identifier  "%M5.6"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "AlwaysTRUE" ;
+  dct:identifier  "%M50.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP manu+" ;
+  dct:identifier  "%M4.6"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Memo_Accumulation" ;
+  dct:identifier  "%M3.4"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_0.5Hz" ;
+  dct:identifier  "%M20.7"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Temps synchro départ" ;
+  dct:identifier  "%MD120"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Réferencement init" ;
+  dct:identifier  "%M1.1"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur pots" ;
+  dct:identifier  "%MW250"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Durrée d'arret en cours" ;
+  dct:identifier  "%MW254"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Set table" ;
+  dct:identifier  "%M4.2"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Memo fermeture trappe" ;
+  dct:identifier  "%MD74"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Consigne distance remplissage" ;
+  dct:identifier  "%MD200"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Acquit Défaut" ;
+  dct:identifier  "%Q0.3"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Visu_BP_Marche" ;
+  dct:identifier  "%M6.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Stop" ;
+  dct:identifier  "%M2.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Ecriture Coeff vitesses" ;
+  dct:identifier  "%M8.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_1.25Hz" ;
+  dct:identifier  "%M20.4"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_2Hz" ;
+  dct:identifier  "%M20.3"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "KM1" ;
+  dct:identifier  "%I0.0"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Alarme V90" ;
+  dct:identifier  "%I0.2"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Memo distance remplissage" ;
+  dct:identifier  "%MD40"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front_Activation_BP" ;
+  dct:identifier  "%M8.3"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front memo stop" ;
+  dct:identifier  "%M305.0"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Temps sychro suivant" ;
+  dct:identifier  "%MD124"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur de marche en min" ;
+  dct:identifier  "%MW130"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur de marche en s" ;
+  dct:identifier  "%MW128"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Visu_Mesures" ;
+  dct:identifier  "%M6.1"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Memo position réel" ;
+  dct:identifier  "%MD41"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Activation_BP_Caché" ;
+  dct:identifier  "%M8.1"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Accélération V90" ;
+  dct:identifier  "%MD64"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Front_N_Arret" ;
+  dct:identifier  "%M300.2"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Etape Initialisation" ;
+  dct:identifier  "%MW12"
+] .
+
+[ a               jsonschema:NumberSchema , ssn:Property ;
+  rdfs:label      "Correction vitesse v20" ;
+  dct:identifier  "%MD150"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_2.5Hz" ;
+  dct:identifier  "%M20.2"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Accumulation Aval B5" ;
+  dct:identifier  "%I0.6"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "BP Arrêt" ;
+  dct:identifier  "%M5.4"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "supervision_Active" ;
+  dct:identifier  "%M31.0"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "Compteur horaire en h" ;
+  dct:identifier  "%MW144"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Presence pot" ;
+  dct:identifier  "%I0.3"
+] .
+
+[ a               jsonschema:IntegerSchema , ssn:Property ;
+  rdfs:label      "System_Byte" ;
+  dct:identifier  "%MB50"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Clock_1Hz" ;
+  dct:identifier  "%M20.5"
+] .
+
+[ a               jsonschema:BooleanSchema , ssn:Property ;
+  rdfs:label      "Image moteur convoyeur" ;
+  dct:identifier  "%Q1.1"
+] .
