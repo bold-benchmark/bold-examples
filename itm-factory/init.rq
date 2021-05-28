@@ -3,6 +3,7 @@ PREFIX ssn: <http://www.w3.org/ns/ssn/>
 PREFIX ua: <http://example.org/opcua#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dct: <http://purl.org/dc/terms/>
 
 INSERT {
     GRAPH ?p {
@@ -10,6 +11,26 @@ INSERT {
     }
 } WHERE {
     ?system ssn:hasProperty ?p .
+};
+
+DELETE {
+    ?bnode rdfs:label ?label ;
+           dct:identifier ?id .
+} INSERT {
+    GRAPH ?var {
+        ?var a ua:Variable ;
+             rdfs:label ?label .
+    }
+} WHERE {
+    ?bnode a ssn:Property ;
+           rdfs:label ?label ;
+           dct:identifier ?id .
+
+    # TODO add sameAs links between UA variables and DA variables.
+
+    FILTER (isBlank(?bnode) && strstarts(?id, "%"))
+
+    BIND (iri(strafter(?id, "%")) AS ?var)
 };
 
 INSERT {

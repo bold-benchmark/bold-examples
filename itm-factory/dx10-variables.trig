@@ -6,577 +6,579 @@
 @prefix ssn:   <http://www.w3.org/ns/ssn/> .
 @prefix sosa:  <http://www.w3.org/ns/sosa/> .
 
+<> rdfs:comment "List of API variables exported from TIA Portal 15.1 (DX 10 Dosaxe PLC)" .
+
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur d'arrêt en h" ;
+  rdfs:label      "Compteur d'arrêt en h"@fr ;
   dct:identifier  "%MW138"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front Start Table" ;
+  rdfs:label      "Front Start Table"@fr ;
   dct:identifier  "%M310.7"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "AlwaysFALSE" ;
+  rdfs:label      "AlwaysFALSE"@fr ;
   dct:identifier  "%M50.3"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Axe_Remplissage_Impulsion" ;
+  rdfs:label      "Axe_Remplissage_Impulsion"@fr ;
   dct:identifier  "%Q0.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front_Absence_Produit" ;
+  rdfs:label      "Front_Absence_Produit"@fr ;
   dct:identifier  "%M6.7"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Etape Marche" ;
+  rdfs:label      "Etape Marche"@fr ;
   dct:identifier  "%M3.0"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur de marche en h" ;
+  rdfs:label      "Compteur de marche en h"@fr ;
   dct:identifier  "%MW132"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Memo 2 ouverture trappe" ;
+  rdfs:label      "Memo 2 ouverture trappe"@fr ;
   dct:identifier  "%MD52"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "FirstScan" ;
+  rdfs:label      "FirstScan"@fr ;
   dct:identifier  "%M50.0"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "N d'Arret" ;
+  rdfs:label      "N d'Arret"@fr ;
   dct:identifier  "%MW252"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Visu_BP_Arrêt" ;
+  rdfs:label      "Visu_BP_Arrêt"@fr ;
   dct:identifier  "%M6.4"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Validation calcul" ;
+  rdfs:label      "Validation calcul"@fr ;
   dct:identifier  "%M4.3"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Etape Arrêt AU" ;
+  rdfs:label      "Etape Arrêt AU"@fr ;
   dct:identifier  "%M3.1"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Set Manu +" ;
+  rdfs:label      "Set Manu +"@fr ;
   dct:identifier  "%M4.5"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front_Comptage" ;
+  rdfs:label      "Front_Comptage"@fr ;
   dct:identifier  "%M300.1"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Set_Manque_Produit" ;
+  rdfs:label      "Set_Manque_Produit"@fr ;
   dct:identifier  "%M6.6"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Duree_Arrets_Cumules" ;
+  rdfs:label      "Duree_Arrets_Cumules"@fr ;
   dct:identifier  "%MW256"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Axe sous puissance" ;
+  rdfs:label      "Axe sous puissance"@fr ;
   dct:identifier  "%I0.1"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Visu_BP_Initialisation" ;
+  rdfs:label      "Visu_BP_Initialisation"@fr ;
   dct:identifier  "%M6.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_10Hz" ;
+  rdfs:label      "Clock_10Hz"@fr ;
   dct:identifier  "%M20.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Came de prise d'origine" ;
+  rdfs:label      "Came de prise d'origine"@fr ;
   dct:identifier  "%I0.4"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Etape conduite" ;
+  rdfs:label      "Etape conduite"@fr ;
   dct:identifier  "%MW10"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Num_message_pupitre" ;
+  rdfs:label      "Num_message_pupitre"@fr ;
   dct:identifier  "%MW240"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Set transfert position" ;
+  rdfs:label      "Set transfert position"@fr ;
   dct:identifier  "%M4.1"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP Initialisaton" ;
+  rdfs:label      "BP Initialisaton"@fr ;
   dct:identifier  "%M5.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Electro Aimant" ;
+  rdfs:label      "Electro Aimant"@fr ;
   dct:identifier  "%Q0.5"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Axe_Remplissage_Sens" ;
+  rdfs:label      "Axe_Remplissage_Sens"@fr ;
   dct:identifier  "%Q0.1"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur horaire en min" ;
+  rdfs:label      "Compteur horaire en min"@fr ;
   dct:identifier  "%MW142"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Coeff_GV_Convoyeur" ;
+  rdfs:label      "Coeff_GV_Convoyeur"@fr ;
   dct:identifier  "%MD280"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front sortie manu" ;
+  rdfs:label      "Front sortie manu"@fr ;
   dct:identifier  "%M308.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Visu_BP_Paramètre" ;
+  rdfs:label      "Visu_BP_Paramètre"@fr ;
   dct:identifier  "%M6.5"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Visu_BP_Manu" ;
+  rdfs:label      "Visu_BP_Manu"@fr ;
   dct:identifier  "%M6.3"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Ajust centrage" ;
+  rdfs:label      "Ajust centrage"@fr ;
   dct:identifier  "%MD68"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_0.625Hz" ;
+  rdfs:label      "Clock_0.625Hz"@fr ;
   dct:identifier  "%M20.6"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Memo Stop" ;
+  rdfs:label      "Memo Stop"@fr ;
   dct:identifier  "%M14.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front arret pause" ;
+  rdfs:label      "Front arret pause"@fr ;
   dct:identifier  "%M310.4"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front 1 KM1" ;
+  rdfs:label      "Front 1 KM1"@fr ;
   dct:identifier  "%M306.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Visu_BP_Caché" ;
+  rdfs:label      "Visu_BP_Caché"@fr ;
   dct:identifier  "%M8.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP Manu" ;
+  rdfs:label      "BP Manu"@fr ;
   dct:identifier  "%M5.3"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP_Sortie_Manu" ;
+  rdfs:label      "BP_Sortie_Manu"@fr ;
   dct:identifier  "%M5.1"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Font_Defaut_V90" ;
+  rdfs:label      "Font_Defaut_V90"@fr ;
   dct:identifier  "%M310.6"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "RAZ Compteur produits" ;
+  rdfs:label      "RAZ Compteur produits"@fr ;
   dct:identifier  "%M34.4"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Temps Remplissage" ;
+  rdfs:label      "Temps Remplissage"@fr ;
   dct:identifier  "%MD100"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Défaut USS" ;
+  rdfs:label      "Défaut USS"@fr ;
   dct:identifier  "%M3.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Presence Produit" ;
+  rdfs:label      "Presence Produit"@fr ;
   dct:identifier  "%I0.5"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Axe_Remplissage_Position_int" ;
+  rdfs:label      "Axe_Remplissage_Position_int"@fr ;
   dct:identifier  "%MW220"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP Marche" ;
+  rdfs:label      "BP Marche"@fr ;
   dct:identifier  "%M5.0"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Clock_Byte" ;
+  rdfs:label      "Clock_Byte"@fr ;
   dct:identifier  "%MB20"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Mémo défaut USS" ;
+  rdfs:label      "Mémo défaut USS"@fr ;
   dct:identifier  "%M3.3"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Vitesse Jog" ;
+  rdfs:label      "Vitesse Jog"@fr ;
   dct:identifier  "%MD70"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_5Hz" ;
+  rdfs:label      "Clock_5Hz"@fr ;
   dct:identifier  "%M20.1"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur d'arrêt en min" ;
+  rdfs:label      "Compteur d'arrêt en min"@fr ;
   dct:identifier  "%MW136"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur d'arrêt en s" ;
+  rdfs:label      "Compteur d'arrêt en s"@fr ;
   dct:identifier  "%MW134"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front pause" ;
+  rdfs:label      "Front pause"@fr ;
   dct:identifier  "%M310.3"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front 2 sens axe" ;
+  rdfs:label      "Front 2 sens axe"@fr ;
   dct:identifier  "%M304.0"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Coeff_PV_Convoyeur" ;
+  rdfs:label      "Coeff_PV_Convoyeur"@fr ;
   dct:identifier  "%MD284"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP Manu -" ;
+  rdfs:label      "BP Manu -"@fr ;
   dct:identifier  "%M4.7"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Memo 1 ouverture trappe" ;
+  rdfs:label      "Memo 1 ouverture trappe"@fr ;
   dct:identifier  "%MD44"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur_Horaire" ;
+  rdfs:label      "Compteur_Horaire"@fr ;
   dct:identifier  "%MD258"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Axe sens négatif" ;
+  rdfs:label      "Axe sens négatif"@fr ;
   dct:identifier  "%M4.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Tag_6" ;
+  rdfs:label      "Tag_6"@fr ;
   dct:identifier  "%M310.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Pause" ;
+  rdfs:label      "Pause"@fr ;
   dct:identifier  "%M310.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front memo accu" ;
+  rdfs:label      "Front memo accu"@fr ;
   dct:identifier  "%M310.1"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Sortie manu" ;
+  rdfs:label      "Sortie manu"@fr ;
   dct:identifier  "%M4.4"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Mise sous puissance" ;
+  rdfs:label      "Mise sous puissance"@fr ;
   dct:identifier  "%Q0.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front sens axe" ;
+  rdfs:label      "Front sens axe"@fr ;
   dct:identifier  "%M302.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Verine Verte" ;
+  rdfs:label      "Verine Verte"@fr ;
   dct:identifier  "%Q0.4"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur horaire en s" ;
+  rdfs:label      "Compteur horaire en s"@fr ;
   dct:identifier  "%MW140"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "DiagStatusUpdate" ;
+  rdfs:label      "DiagStatusUpdate"@fr ;
   dct:identifier  "%M50.1"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front présence pot" ;
+  rdfs:label      "Front présence pot"@fr ;
   dct:identifier  "%M300.0"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Glissement V20" ;
+  rdfs:label      "Glissement V20"@fr ;
   dct:identifier  "%MD60"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP Stop" ;
+  rdfs:label      "BP Stop"@fr ;
   dct:identifier  "%M5.5"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "RAZ Compteurs Horaire" ;
+  rdfs:label      "RAZ Compteurs Horaire"@fr ;
   dct:identifier  "%M34.6"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP Reset Compteur" ;
+  rdfs:label      "BP Reset Compteur"@fr ;
   dct:identifier  "%M5.6"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "AlwaysTRUE" ;
+  rdfs:label      "AlwaysTRUE"@fr ;
   dct:identifier  "%M50.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP manu+" ;
+  rdfs:label      "BP manu+"@fr ;
   dct:identifier  "%M4.6"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Memo_Accumulation" ;
+  rdfs:label      "Memo_Accumulation"@fr ;
   dct:identifier  "%M3.4"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_0.5Hz" ;
+  rdfs:label      "Clock_0.5Hz"@fr ;
   dct:identifier  "%M20.7"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Temps synchro départ" ;
+  rdfs:label      "Temps synchro départ"@fr ;
   dct:identifier  "%MD120"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Réferencement init" ;
+  rdfs:label      "Réferencement init"@fr ;
   dct:identifier  "%M1.1"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur pots" ;
+  rdfs:label      "Compteur pots"@fr ;
   dct:identifier  "%MW250"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Durrée d'arret en cours" ;
+  rdfs:label      "Durrée d'arret en cours"@fr ;
   dct:identifier  "%MW254"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Set table" ;
+  rdfs:label      "Set table"@fr ;
   dct:identifier  "%M4.2"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Memo fermeture trappe" ;
+  rdfs:label      "Memo fermeture trappe"@fr ;
   dct:identifier  "%MD74"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Consigne distance remplissage" ;
+  rdfs:label      "Consigne distance remplissage"@fr ;
   dct:identifier  "%MD200"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Acquit Défaut" ;
+  rdfs:label      "Acquit Défaut"@fr ;
   dct:identifier  "%Q0.3"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Visu_BP_Marche" ;
+  rdfs:label      "Visu_BP_Marche"@fr ;
   dct:identifier  "%M6.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Stop" ;
+  rdfs:label      "Stop"@fr ;
   dct:identifier  "%M2.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Ecriture Coeff vitesses" ;
+  rdfs:label      "Ecriture Coeff vitesses"@fr ;
   dct:identifier  "%M8.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_1.25Hz" ;
+  rdfs:label      "Clock_1.25Hz"@fr ;
   dct:identifier  "%M20.4"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_2Hz" ;
+  rdfs:label      "Clock_2Hz"@fr ;
   dct:identifier  "%M20.3"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "KM1" ;
+  rdfs:label      "KM1"@fr ;
   dct:identifier  "%I0.0"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Alarme V90" ;
+  rdfs:label      "Alarme V90"@fr ;
   dct:identifier  "%I0.2"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Memo distance remplissage" ;
+  rdfs:label      "Memo distance remplissage"@fr ;
   dct:identifier  "%MD40"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front_Activation_BP" ;
+  rdfs:label      "Front_Activation_BP"@fr ;
   dct:identifier  "%M8.3"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front memo stop" ;
+  rdfs:label      "Front memo stop"@fr ;
   dct:identifier  "%M305.0"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Temps sychro suivant" ;
+  rdfs:label      "Temps sychro suivant"@fr ;
   dct:identifier  "%MD124"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur de marche en min" ;
+  rdfs:label      "Compteur de marche en min"@fr ;
   dct:identifier  "%MW130"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur de marche en s" ;
+  rdfs:label      "Compteur de marche en s"@fr ;
   dct:identifier  "%MW128"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Visu_Mesures" ;
+  rdfs:label      "Visu_Mesures"@fr ;
   dct:identifier  "%M6.1"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Memo position réel" ;
+  rdfs:label      "Memo position réel"@fr ;
   dct:identifier  "%MD41"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Activation_BP_Caché" ;
+  rdfs:label      "Activation_BP_Caché"@fr ;
   dct:identifier  "%M8.1"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Accélération V90" ;
+  rdfs:label      "Accélération V90"@fr ;
   dct:identifier  "%MD64"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Front_N_Arret" ;
+  rdfs:label      "Front_N_Arret"@fr ;
   dct:identifier  "%M300.2"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Etape Initialisation" ;
+  rdfs:label      "Etape Initialisation"@fr ;
   dct:identifier  "%MW12"
 ] .
 
 [ a               jsonschema:NumberSchema , ssn:Property ;
-  rdfs:label      "Correction vitesse v20" ;
+  rdfs:label      "Correction vitesse v20"@fr ;
   dct:identifier  "%MD150"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_2.5Hz" ;
+  rdfs:label      "Clock_2.5Hz"@fr ;
   dct:identifier  "%M20.2"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Accumulation Aval B5" ;
+  rdfs:label      "Accumulation Aval B5"@fr ;
   dct:identifier  "%I0.6"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "BP Arrêt" ;
+  rdfs:label      "BP Arrêt"@fr ;
   dct:identifier  "%M5.4"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "supervision_Active" ;
+  rdfs:label      "supervision_Active"@fr ;
   dct:identifier  "%M31.0"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "Compteur horaire en h" ;
+  rdfs:label      "Compteur horaire en h"@fr ;
   dct:identifier  "%MW144"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Presence pot" ;
+  rdfs:label      "Presence pot"@fr ;
   dct:identifier  "%I0.3"
 ] .
 
 [ a               jsonschema:IntegerSchema , ssn:Property ;
-  rdfs:label      "System_Byte" ;
+  rdfs:label      "System_Byte"@fr ;
   dct:identifier  "%MB50"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Clock_1Hz" ;
+  rdfs:label      "Clock_1Hz"@fr ;
   dct:identifier  "%M20.5"
 ] .
 
 [ a               jsonschema:BooleanSchema , ssn:Property ;
-  rdfs:label      "Image moteur convoyeur" ;
+  rdfs:label      "Image moteur convoyeur"@fr ;
   dct:identifier  "%Q1.1"
 ] .
