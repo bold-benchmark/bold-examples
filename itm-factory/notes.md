@@ -24,7 +24,7 @@
 - "Compteur pots" (%MW250): number of containers having reached the end of the conveyor
 - "Compteur_Horaire" (%MD258): up time in second
 
-(difference between %I0.1 and %Q0.2)
+(what is the difference between %I0.1 and %Q0.2?)
 
 ## Control rules
 

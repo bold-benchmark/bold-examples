@@ -2,6 +2,7 @@ PREFIX ua: <http://example.org/opcua#>
 PREFIX schema: <http://schema.org/>
 PREFIX ssn: <http://www.w3.org/ns/ssn/>
 PREFIX s4inma: <https://saref.etsi.org/saref4inma/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sim: <http://ti.rw.fau.de/sim#>
 
@@ -37,7 +38,8 @@ DELETE {
     BIND (?x + (?v * ?dt) AS ?xp)
 }
 
-# action to start/stop the motor: POST to action and creates new resource
-# TODO to return in Location header?
+# action to start/stop the motor: PUT on status
 
 # silo: level decreases if motor started?
+
+# spawn an item every 5s (for testing purposes)

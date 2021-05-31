@@ -34,13 +34,25 @@ DELETE {
 };
 
 INSERT {
-    ?p rdfs:seeAlso ?var .
-
     GRAPH ?var {
-        ?var rdf:value "null"^^rdf:JSON .
+        ?var rdfs:seeAlso ?value .
+    }
+
+    GRAPH ?value {
+        ?value rdf:value "null"^^rdf:JSON .
     }
 } WHERE {
-    ?p a ssn:Property .
+    ?var a ua:Variable .
 
-    BIND (uri(concat(str(?p), "/Variable")) AS ?var)
+    BIND (uri(concat(str(?var), "/value")) AS ?value)
+};
+
+# add default values
+
+DELETE DATA {
+    <I0.5/value> { <I0.5/value> rdf:value "null"^^rdf:JSON }
+};
+
+INSERT DATA {
+    <I0.5/value> { <I0.5/value> rdf:value "false"^^rdf:JSON }
 }
