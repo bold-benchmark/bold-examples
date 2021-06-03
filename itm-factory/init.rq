@@ -1,5 +1,6 @@
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX jsonschema: <https://www.w3.org/2019/wot/json-schema#>
 PREFIX ua: <http://example.org/opcua#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -7,19 +8,21 @@ PREFIX dct: <http://purl.org/dc/terms/>
 
 INSERT {
     GRAPH ?p {
-        ?p a sosa:ObservableProperty, ssn:Property, ua:Variable .
+        ?p a sosa:ObservableProperty, ssn:Property .
     }
 } WHERE {
     ?system ssn:hasProperty ?p .
 };
 
 DELETE {
-    ?bnode rdfs:label ?label ;
+    ?bnode a ssn:Property, ?schema ;
+           rdfs:label ?label ;
            dct:identifier ?id .
 } INSERT {
     GRAPH ?var {
-        ?var a ua:Variable ;
-             rdfs:label ?label .
+        ?var a ua:Variable, ?schema ;
+             rdfs:label ?label ;
+             ?p ?o .
     }
 } WHERE {
     ?bnode a ssn:Property ;
@@ -30,29 +33,56 @@ DELETE {
 
     FILTER (isBlank(?bnode) && strstarts(?id, "%"))
 
+    OPTIONAL {
+        # identifer used for mapping between auto-gen file and manually curated file
+        ?otherBnode dct:identifier ?id ; ?p ?o .
+        FILTER (?bnode != ?otherBnode)
+    }
+
+    ?bnode a ?schema .
+    FILTER (strstarts(str(?schema), str(jsonschema:)))
+
     BIND (iri(strafter(?id, "%")) AS ?var)
 };
 
 INSERT {
     GRAPH ?var {
-        ?var rdfs:seeAlso ?value .
+        ?var rdfs:seeAlso ?valueURI .
     }
 
-    GRAPH ?value {
-        ?value rdf:value "null"^^rdf:JSON .
+    GRAPH ?valueURI {
+        ?valueURI rdf:value ?defaultValue .
     }
 } WHERE {
     ?var a ua:Variable .
 
-    BIND (uri(concat(str(?var), "/value")) AS ?value)
+    OPTIONAL {
+        {
+            ?var a jsonschema:BooleanSchema .
+            BIND ("false"^^rdf:JSON AS ?jsonValue)
+        } UNION {
+            ?var a jsonschema:NumberSchema .
+            BIND ("0.0"^^rdf:JSON AS ?jsonValue)
+        } UNION {
+            ?var a jsonschema:IntegerSchema .
+            BIND ("0"^^rdf:JSON AS ?jsonValue)
+        }
+    }
+
+    BIND (uri(concat(str(?var), "/value")) AS ?valueURI)
+    BIND (if(bound(?jsonValue), ?jsonValue, "null"^^rdf:JSON) AS ?defaultValue)
 };
 
-# add default values
+# TODO to remove (the motor should be turned on by agents)
 
 DELETE DATA {
-    <I0.5/value> { <I0.5/value> rdf:value "null"^^rdf:JSON }
+    GRAPH <MD60/value> {
+        <MD60/value> rdf:value "0.0"^^rdf:JSON .
+    }
 };
 
 INSERT DATA {
-    <I0.5/value> { <I0.5/value> rdf:value "false"^^rdf:JSON }
+    GRAPH <MD60/value> {
+        <MD60/value> rdf:value "10"^^rdf:JSON .
+    }
 }

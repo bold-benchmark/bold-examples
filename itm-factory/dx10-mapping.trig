@@ -1,0 +1,21 @@
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix itm: <http://ci.mines-stetienne.fr/kg/itmfactory/> .
+@prefix jsonschema: <https://www.w3.org/2019/wot/json-schema#> .
+@prefix ua: <http://example.org/opcua#> .
+
+# TODO mapping from properties to devices in DX10 definition.
+
+[ dct:identifier "%MW220" ] ssn:isPropertyOf itm:dx10-silo .
+
+[ dct:identifier "%MD60" ] owl:sameAs <DX10/DosaxeConveyor/ConveyorMotor/Speed> .
+
+# triples used for simulation but not exposed
+
+<silo-motor-speed> a ua:Variable, jsonschema:NumberSchema ;
+                   owl:sameAs <DX10/DosaxeSilo/SiloMotor/Speed> .
+
+<DX10/DosaxeSilo> <connectsWith> <DX10/DosaxeSilo/SiloMotor> ;
+                  schema:location [
+                      schema:longitude 0
+                  ] .

@@ -1,0 +1,82 @@
+PREFIX ua: <http://example.org/opcua#>
+PREFIX schema: <http://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX s4inma: <https://saref.etsi.org/saref4inma/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX sim: <http://ti.rw.fau.de/sim#>
+
+# motors: if started, any object "connected to" it moves at the given speed
+
+DELETE {
+    ?loc schema:longitude ?x .
+} INSERT {
+    ?loc schema:longitude ?newX .
+} WHERE {
+    VALUES ?speed {
+        <MD60> # DX10 conveyor's speed
+        <silo-motor-speed>
+    }
+
+    ?motor a ua:GenericMotor ;
+           ssn:hasProperty ?p .
+
+    # TODO if has status on (action to start/stop the motor: PUT on status)
+
+    ?speed owl:sameAs ?p ;
+           rdfs:seeAlso ?var .
+
+    ?var rdf:value ?jsonVal .
+
+    BIND (xsd:double(str(?jsonVal)) AS ?v)
+
+    <sim> sim:timeslotDuration ?dt .
+
+    ?object <connectsWith> ?motor ;
+            schema:location ?loc .
+
+    ?loc schema:longitude ?x .
+
+    BIND (?x + (?v * ?dt / 1000) AS ?newX)
+};
+
+# silo's position updated as schema:location but exposed with rdf:value
+
+DELETE {
+    GRAPH <MW220/value> {
+        <MW220/value> rdf:value ?val .
+    }
+} INSERT {
+    GRAPH <MW220/value> {
+        <MW220/value> rdf:value ?newVal .
+    }
+} WHERE {
+    <DX10/DosaxeSilo> schema:location ?loc .
+    ?loc schema:longitude ?x .
+
+    <MW220/value> rdf:value ?val .
+
+    BIND (strdt(str(?x), rdf:JSON) AS ?newVal)
+};
+
+# silo: level decreases if valve open
+
+# presence sensors: if some object has same X coordinate as the sensor, switch sensor value
+
+DELETE {
+    GRAPH <I0.6/value> {
+        <I0.6/value> rdf:value "false"^^rdf:JSON .
+    }
+} INSERT {
+    GRAPH <I0.6/value> {
+        <I0.6/value> rdf:value "true"^^rdf:JSON .
+    }
+} WHERE {
+    ?item a s4inma:Item ;
+          schema:location ?loc .
+
+    ?loc schema:longitude ?x .
+    
+    FILTER (?x >= 80) # TODO location of I0.6 (= length of conveyor)
+}

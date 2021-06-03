@@ -1,0 +1,33 @@
+PREFIX ua: <http://example.org/opcua#>
+PREFIX schema: <http://schema.org/>
+PREFIX ssn: <http://www.w3.org/ns/ssn/>
+PREFIX s4inma: <https://saref.etsi.org/saref4inma/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sim: <http://ti.rw.fau.de/sim#>
+
+# the silo's motor is always synchronous with the conveyor's
+
+# TODO if position is between beginning and end
+
+DELETE {
+    ?siloVal rdf:value ?sval .
+} INSERT {
+    ?siloVal rdf:value ?cval .
+} WHERE {
+    ?siloSpeed owl:sameAs <DX10/DosaxeSilo/SiloMotor/Speed> ;
+               rdfs:seeAlso ?siloVal .
+    ?siloVal rdf:value ?sval .
+
+    ?conveyorSpeed owl:sameAs <DX10/DosaxeConveyor/ConveyorMotor/Speed> ;
+                   rdfs:seeAlso ?conveyorVal .
+    ?conveyorVal rdf:value ?cval .
+}
+
+# if item detected and silo not empty, start motor
+
+# when silo is hitting end of axis, return to beginning
+
+# if valve is open, close it after T ms
+
+# if item reached end of conveyor, increment counter
