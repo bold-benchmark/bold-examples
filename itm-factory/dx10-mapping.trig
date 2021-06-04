@@ -12,6 +12,8 @@
 
 [ dct:identifier "%I0.6" ] owl:sameAs <DX10/DosaxeConveyor/DownStreamPresenceIRSensor/PresenceDetected> .
 
+[ dct:identifier "%I0.5" ] owl:sameAs <DX10/DosaxeSilo/SiloLevelIndicator/PresenceDetected> .
+
 # triples used for simulation but not exposed
 
 <silo-motor-speed> a ua:Variable, jsonschema:NumberSchema ;
@@ -19,5 +21,9 @@
 
 <DX10/DosaxeSilo> <connectsWith> <DX10/DosaxeSilo/SiloMotor> ;
                   schema:location [
-                      schema:longitude 0
+                      schema:longitude 0 ;
+                      schema:latitude 0 ;
+                      schema:elevation 1.5
                   ] .
+
+<DX10/DosaxeSilo> <level> 10 .

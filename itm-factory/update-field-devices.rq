@@ -2,6 +2,7 @@ PREFIX ua: <http://example.org/opcua#>
 PREFIX schema: <http://schema.org/>
 PREFIX ssn: <http://www.w3.org/ns/ssn/>
 PREFIX s4inma: <https://saref.etsi.org/saref4inma/>
+PREFIX pto: <http://www.productontology.org/id/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -41,6 +42,25 @@ DELETE {
     BIND (?x + (?v * ?dt / 1000) AS ?newX)
 };
 
+# if item's position is beyond conveyor's limits, set it back to its maximum
+
+DELETE {
+    ?loc schema:longitude ?x .
+} INSERT {
+    ?loc schema:longitude ?width .
+} WHERE {
+    ?item a s4inma:Item ;
+          schema:location ?loc .
+
+    ?loc schema:longitude ?x .
+
+    <DX10/DosaxeConveyor> schema:width ?widthUCUM .
+
+    BIND (xsd:double(strbefore(str(?widthUCUM), " ")) / 100 AS ?width) # assumed to be in cm
+
+    FILTER (?x > ?width)
+};
+
 # silo's position updated as schema:location but exposed with rdf:value
 
 DELETE {
@@ -60,36 +80,82 @@ DELETE {
     BIND (strdt(str(?x), rdf:JSON) AS ?newVal)
 };
 
-# silo: level decreases if valve open
-
-# presence sensors: if some object has same X coordinate as the sensor, switch sensor value
+# presence sensors: if some object has the same coordinates as the sensor, switch sensor value
 
 DELETE {
-    GRAPH <I0.6/value> {
-        <I0.6/value> rdf:value ?detected .
+    GRAPH ?val {
+        ?val rdf:value ?detected .
     }
 } INSERT {
-    GRAPH <I0.6/value> {
-        <I0.6/value> rdf:value ?newDetected .
+    GRAPH ?val {
+        ?val rdf:value ?newDetected .
     }
 } WHERE {
-    ?item a s4inma:Item ;
-          schema:location ?loc .
+    ?object schema:location ?loc .
 
-    ?loc schema:longitude ?x .
+    ?loc schema:longitude ?x ;
+         schema:latitude ?y ;
+         schema:elevation ?z .
 
-    <I0.6> owl:sameAs ?p ;
-           rdfs:seeAlso ?val .
+    ?sensor a pto:Presence_sensing_device ;
+            ssn:hasProperty ?p .
+
+    ?var owl:sameAs ?p ;
+         rdfs:seeAlso ?val .
 
     ?val rdf:value ?detected .
 
     ?sensor ssn:hasProperty ?p ;
             schema:location ?sensorLoc .
 
-    ?sensorLoc schema:longitude ?sensorX .
+    ?sensorLoc schema:longitude ?sensorX ;
+               schema:latitude ?sensorY ;
+               schema:elevation ?sensorZ .
     
     # at sensor position +/- 10%
-    BIND (?x <= (?sensorX * 1.1) && ?x >= (?sensorX * 0.9) AS ?boolDetected)
+    BIND (?x <= (?sensorX * 1.1) && ?x >= (?sensorX * 0.9) AS ?xDetected)
+    BIND (?y <= (?sensorY * 1.1) && ?y >= (?sensorY * 0.9) AS ?yDetected)
+    BIND (?z <= (?sensorZ * 1.1) && ?z >= (?sensorZ * 0.9) AS ?zDetected)
+
+    BIND (strdt(str(?xDetected && ?yDetected && ?zDetected), rdf:JSON) AS ?newDetected)
+};
+
+# silo: level decreases if valve open
+
+DELETE {
+    GRAPH <DX10/DosaxeSilo> {
+        <DX10/DosaxeSilo> <level> ?newLevel .
+    }
+} INSERT {
+    GRAPH <DX10/DosaxeSilo> {
+        <DX10/DosaxeSilo> <level> ?newLevel .
+    }
+} WHERE {
+    <DX10/DosaxeSilo> <level> ?level .
+
+    <Q0.5> rdfs:seeAlso ?val .
+
+    FILTER (xsd:boolean(str(?val))) # valve open
+
+    BIND (?level - 1 AS ?newLevel)
+};
+
+# if silo is empty (detected by B4), I0.5 is false
+
+DELETE {
+    GRAPH ?val {
+        ?val rdf:value ?presence .
+    }
+} INSERT {
+    GRAPH ?val {
+        ?val rdf:value ?newPresence .
+    }
+} WHERE {
+    <DX10/DosaxeSilo> <level> ?level .
+
+    <I0.5> rdfs:seeAlso ?val .
     
-    BIND (strdt(str(?boolDetected), rdf:JSON) AS ?newDetected)
+    ?val rdf:value ?presence .
+
+    BIND (strdt(str(?level > 0), rdf:JSON) AS ?newPresence)
 }

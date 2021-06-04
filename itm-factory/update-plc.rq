@@ -22,7 +22,7 @@ DELETE {
     ?conveyorSpeed owl:sameAs <DX10/DosaxeConveyor/ConveyorMotor/Speed> ;
                    rdfs:seeAlso ?conveyorVal .
     ?conveyorVal rdf:value ?cval .
-}
+};
 
 # if item detected and silo not empty, start motor
 
@@ -31,3 +31,29 @@ DELETE {
 # if valve is open, close it after T ms
 
 # if item reached end of conveyor, increment counter
+
+DELETE {
+    GRAPH ?val {
+        ?val rdf:value ?counter .
+    }
+} INSERT {
+    GRAPH ?val {
+        ?val rdf:value ?newCounter .
+    }
+} WHERE {
+    <I0.6> rdfs:seeAlso ?sensorVal .
+    
+    ?sensorVal rdf:value ?detected .
+
+    FILTER (xsd:boolean(str(?detected)))
+
+    <MW250> rdfs:seeAlso ?val .
+
+    ?val rdf:value ?counter .
+
+    BIND (strdt(str(xsd:integer(str(?counter)) + 1), rdf:JSON) AS ?newCounter)
+
+    # TODO unless I0.6 was already true at last iteration...
+}
+
+# increment uptime
