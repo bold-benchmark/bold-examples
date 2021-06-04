@@ -73,16 +73,15 @@ INSERT {
     BIND (if(bound(?jsonValue), ?jsonValue, "null"^^rdf:JSON) AS ?defaultValue)
 };
 
-# TODO to remove (the motor should be turned on by agents)
+# DELETE DATA {
+#     GRAPH <%MD60/value> {
+#         <MD60/value> rdf:value "0.0"^^rdf:JSON
+#     }
+# };
 
-DELETE DATA {
-    GRAPH <MD60/value> {
-        <MD60/value> rdf:value "0.0"^^rdf:JSON .
-    }
-};
+# INSERT DATA {
+#     GRAPH <%MD60/value> {
+#         <MD60/value> rdf:value "10"^^rdf:JSON
+#     }
+# };
 
-INSERT DATA {
-    GRAPH <MD60/value> {
-        <MD60/value> rdf:value "10"^^rdf:JSON .
-    }
-}

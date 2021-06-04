@@ -60,6 +60,11 @@
 
 <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> {
        <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> a ssn:System, ua:IRSensor ;
+                                                        schema:location  [
+                                                            # in m
+                                                            schema:longitude 0.8 ;
+                                                            schema:latitude 0
+                                                        ] ;
                                                         ssn:hasProperty <DX10/DosaxeConveyor/DownStreamPresenceIRSensor/PresenceDetected> .
 }
 

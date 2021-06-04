@@ -10,6 +10,8 @@
 
 [ dct:identifier "%MD60" ] owl:sameAs <DX10/DosaxeConveyor/ConveyorMotor/Speed> .
 
+[ dct:identifier "%I0.6" ] owl:sameAs <DX10/DosaxeConveyor/DownStreamPresenceIRSensor/PresenceDetected> .
+
 # triples used for simulation but not exposed
 
 <silo-motor-speed> a ua:Variable, jsonschema:NumberSchema ;

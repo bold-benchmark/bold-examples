@@ -29,9 +29,9 @@ DELETE {
 
     ?var rdf:value ?jsonVal .
 
-    BIND (xsd:double(str(?jsonVal)) AS ?v)
+    BIND (xsd:double(str(?jsonVal)) AS ?v) # (assumed to be) in m/s
 
-    <sim> sim:timeslotDuration ?dt .
+    <sim> sim:timeslotDuration ?dt . # in ms
 
     ?object <connectsWith> ?motor ;
             schema:location ?loc .
@@ -66,17 +66,30 @@ DELETE {
 
 DELETE {
     GRAPH <I0.6/value> {
-        <I0.6/value> rdf:value "false"^^rdf:JSON .
+        <I0.6/value> rdf:value ?detected .
     }
 } INSERT {
     GRAPH <I0.6/value> {
-        <I0.6/value> rdf:value "true"^^rdf:JSON .
+        <I0.6/value> rdf:value ?newDetected .
     }
 } WHERE {
     ?item a s4inma:Item ;
           schema:location ?loc .
 
     ?loc schema:longitude ?x .
+
+    <I0.6> owl:sameAs ?p ;
+           rdfs:seeAlso ?val .
+
+    ?val rdf:value ?detected .
+
+    ?sensor ssn:hasProperty ?p ;
+            schema:location ?sensorLoc .
+
+    ?sensorLoc schema:longitude ?sensorX .
     
-    FILTER (?x >= 80) # TODO location of I0.6 (= length of conveyor)
+    # at sensor position +/- 10%
+    BIND (?x <= (?sensorX * 1.1) && ?x >= (?sensorX * 0.9) AS ?boolDetected)
+    
+    BIND (strdt(str(?boolDetected), rdf:JSON) AS ?newDetected)
 }
