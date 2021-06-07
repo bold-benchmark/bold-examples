@@ -1,84 +1,90 @@
+@prefix dct: <http://purl.org/dc/terms/> .
 @prefix ssn: <http://www.w3.org/ns/ssn/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix schema: <http://schema.org/> .
 @prefix cdt: <http://w3id.org/lindt/custom_datatypes#> .
 @prefix ua: <http://example.org/opcua#> . # TODO replace with an ontology derived from OPC-UA companion standards
 @prefix pto: <http://www.productontology.org/id/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix itm: <https://ci.mines-stetienne.fr/kg/itmfactory/> .
+@prefix s4syst: <https://saref.etsi.org/saref4syst/> .
 
 # TODO align with https://ci.mines-stetienne.fr/kg/itmfactory/dx10
 
 <DX10> {
-       <DX10> a sosa:Platform ;
-              sosa:hosts <DX10/DosaxeSilo> ,
-                            <DX10/DosaxeConveyor> ,
-                            <DX10/DosaxeEmergencyStopButton> ,
-                            <DX10/DosaxeSignalLightColumn> .
+    <DX10> a sosa:Platform ;
+           owl:sameAs itm:dx10 ;
+           sosa:hosts <DX10/DosaxeSilo> ,
+                      <DX10/DosaxeConveyor> ,
+                      <DX10/DosaxeEmergencyStopButton> ,
+                      <DX10/DosaxeSignalLightColumn> .
 }
 
 <DX10/DosaxeSilo> {
-       <DX10/DosaxeSilo> a ssn:System ;
-                         ssn:hasSubSystem <DX10/DosaxeSilo/SiloLevelIndicator> ,
-                                          <DX10/DosaxeSilo/SiloLimitSwitch> ,
-                                          <DX10/DosaxeSilo/SiloMotor> ,
-                                          <DX10/DosaxeSilo/SiloStatusIndicator> .
+    <DX10/DosaxeSilo> a sosa:FeatureOfInterest .
 }
 
 <DX10/DosaxeSilo/SiloLevelIndicator> {
-       <DX10/DosaxeSilo/SiloLevelIndicator> a ssn:System, ua:GenericSensor, pto:Presence_sensing_device ;
-                                            ssn:hasProperty <DX10/DosaxeSilo/SiloLevelIndicator/PresenceDetected> .
+    <DX10/DosaxeSilo/SiloLevelIndicator> a ssn:System, pto:Presence_sensing_device ;
+                                         dct:identifier "B4" ;
+                                         ssn:hasProperty <DX10/DosaxeSilo/SiloLevelIndicator/PresenceDetected> .
 }
 
 <DX10/DosaxeSilo/SiloLimitSwitch> {
-       <DX10/DosaxeSilo/SiloLimitSwitch> a ssn:System, ua:GenericSensor, pto:Presence_sensing_device ;
-                                         ssn:hasProperty <DX10/DosaxeSilo/SiloLimitSwitch/SwitchContactOn> .
+    <DX10/DosaxeSilo/SiloLimitSwitch> a ssn:System, pto:Presence_sensing_device ;
+                                      dct:identifier "S5" ;
+                                      ssn:hasProperty <DX10/DosaxeSilo/SiloLimitSwitch/SwitchContactOn> .
 }
 
+# TODO other silo limit switch (other side of the axis)
+
 <DX10/DosaxeSilo/SiloMotor> {
-       <DX10/DosaxeSilo/SiloMotor> a ssn:System, ua:GenericMotor ;
-                                   ssn:hasProperty <DX10/DosaxeSilo/SiloMotor/Direction> ,
-                                                   <DX10/DosaxeSilo/SiloMotor/Speed> ,
-                                                   <DX10/DosaxeSilo/SiloMotor/State> .
+    <DX10/DosaxeSilo/SiloMotor> a ssn:System, pto:Electric_motor ;
+                                dct:identifier "M2" ;
+                                ssn:hasProperty <DX10/DosaxeSilo/SiloMotor/Direction> ,
+                                                <DX10/DosaxeSilo/SiloMotor/Speed> ,
+                                                <DX10/DosaxeSilo/SiloMotor/State> .
 }
 
 <DX10/DosaxeSilo/SiloStatusIndicator> {
-       <DX10/DosaxeSilo/SiloStatusIndicator> a ssn:System, ua:GenericSensor, pto:Presence_sensing_device ;
-                                             ssn:hasProperty <DX10/DosaxeSilo/SiloStatusIndicator/PresenceDetected> .
+    <DX10/DosaxeSilo/SiloStatusIndicator> a ssn:System, pto:Presence_sensing_device ;
+                                          ssn:hasProperty <DX10/DosaxeSilo/SiloStatusIndicator/PresenceDetected> .
 }
 
 <DX10/DosaxeConveyor> {
-       <DX10/DosaxeConveyor> a ssn:System, ua:BeltConveyor ; # TODO see AML library that includes BeltConveyor
-                             schema:width "80 cm"^^cdt:ucum ;
-                             ssn:hasSubSystem <DX10/DosaxeConveyor/ConveyorMotor> ,
-                                              <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> .
+    <DX10/DosaxeConveyor> a ssn:System, pto:Conveyor_belt ;
+                          schema:width "80 cm"^^cdt:ucum .
 }
 
 <DX10/DosaxeConveyor/ConveyorMotor> {
-       <DX10/DosaxeConveyor/ConveyorMotor> a ssn:System, ua:GenericMotor ;
-                                           ssn:hasProperty <DX10/DosaxeConveyor/ConveyorMotor/Direction> ,
-                                                           <DX10/DosaxeConveyor/ConveyorMotor/Speed> ,
-                                                           <DX10/DosaxeConveyor/ConveyorMotor/State> .
+    <DX10/DosaxeConveyor/ConveyorMotor> a ssn:System, pto:Electric_motor ;
+                                        dct:identifier "M1" ;
+                                        ssn:hasProperty <DX10/DosaxeConveyor/ConveyorMotor/Direction> ,
+                                                        <DX10/DosaxeConveyor/ConveyorMotor/Speed> ,
+                                                        <DX10/DosaxeConveyor/ConveyorMotor/State> .
 }
 
 <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> {
-       <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> a ssn:System, ua:IRSensor, pto:Presence_sensing_device ;
-                                                        schema:location  [
-                                                            # in m
-                                                            schema:longitude 0.8 ;
-                                                            schema:latitude 0 ;
-                                                            schema:elevation 1
-                                                        ] ;
-                                                        ssn:hasProperty <DX10/DosaxeConveyor/DownStreamPresenceIRSensor/PresenceDetected> .
+    <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> a ssn:System, pto:Presence_sensing_device ;
+                                                     dct:identifier "B5" ;
+                                                     schema:location  [
+                                                         # in m
+                                                         schema:longitude 0.8 ;
+                                                         schema:latitude 0 ;
+                                                         schema:elevation 1
+                                                     ] ;
+                                                     ssn:hasProperty <DX10/DosaxeConveyor/DownStreamPresenceIRSensor/PresenceDetected> .
 }
 
 <DX10/DosaxeEmergencyStopButton> {
-       <DX10/DosaxeEmergencyStopButton> a ssn:System, ua:PushButton ;
-                                        ssn:hasProperty <DX10/DosaxeEmergencyStopButton/PushedButton> .
+    <DX10/DosaxeEmergencyStopButton> a ssn:System, pto:Kill_switch ;
+                                     ssn:hasProperty <DX10/DosaxeEmergencyStopButton/PushedButton> .
 }
 
 <DX10/DosaxeSignalLightColumn> {
-       <DX10/DosaxeSignalLightColumn> a ssn:System, ua:SignalLightColumn ;
-                                      ssn:hasProperty <DX10/DosaxeSignalLightColumn/FixedLight> ,
-                                                      <DX10/DosaxeSignalLightColumnGreen> ,
-                                                      <DX10/DosaxeSignalLightColumn/Red> ,
-                                                      <DX10/DosaxeSignalLightColumn/White> .
+    <DX10/DosaxeSignalLightColumn> a ssn:System, pto:Stack_light ;
+                                   ssn:hasProperty <DX10/DosaxeSignalLightColumn/FixedLight> ,
+                                                   <DX10/DosaxeSignalLightColumnGreen> ,
+                                                   <DX10/DosaxeSignalLightColumn/Red> ,
+                                                   <DX10/DosaxeSignalLightColumn/White> .
 }
