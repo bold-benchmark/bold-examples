@@ -20,7 +20,7 @@ DELETE {
         <silo-motor-speed>
     }
 
-    ?motor a ua:GenericMotor ;
+    ?motor a pto:Electric_motor ;
            ssn:hasProperty ?p .
 
     # TODO if has status on (action to start/stop the motor: PUT on status)

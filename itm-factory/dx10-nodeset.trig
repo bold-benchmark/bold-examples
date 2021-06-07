@@ -9,7 +9,12 @@
 @prefix itm: <https://ci.mines-stetienne.fr/kg/itmfactory/> .
 @prefix s4syst: <https://saref.etsi.org/saref4syst/> .
 
-# TODO align with https://ci.mines-stetienne.fr/kg/itmfactory/dx10
+# TODO transfer to https://ci.mines-stetienne.fr/kg/itmfactory/ (and reimport in non-exposed named graphs)
+
+# TODO use identifiers to mint URI (instead of OPC-UA nodes)
+
+# TODO not (sensor hasproperty detected), but rather (sensors observes presence)
+# use Sampling instead: observed location is a sample and has a boolean property: occupied
 
 <DX10> {
     <DX10> a sosa:Platform ;
@@ -17,7 +22,37 @@
            sosa:hosts <DX10/DosaxeSilo> ,
                       <DX10/DosaxeConveyor> ,
                       <DX10/DosaxeEmergencyStopButton> ,
-                      <DX10/DosaxeSignalLightColumn> .
+                      <DX10/DosaxeSignalLightColumn> ,
+                      <DX10/DosaxeSilo/SiloLevelIndicator> ,
+                      <DX10/DosaxeSilo/SiloLimitSwitch> ,
+                      <DX10/DosaxeSilo/SiloLimitSwitch2> ,
+                      <DX10/DosaxeSilo/SiloStatusIndicator> ,
+                      <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> ,
+                      <DX10/DosaxeConveyor/ConveyorMotor> ,
+                      <DX10/DosaxeSilo/SiloMotor> ,
+                      <PLC> ,
+                      <V20> ,
+                      <V90> .
+}
+
+<PLC> {
+    <PLC> a ssn:System ;
+          s4syst:connectedTo <DX10/DosaxeSilo/SiloLevelIndicator> ,
+                             <DX10/DosaxeSilo/SiloLimitSwitch> ,
+                             <DX10/DosaxeSilo/SiloStatusIndicator> ,
+                             <DX10/DosaxeConveyor/DownStreamPresenceIRSensor> ,
+                             <V20> ,
+                             <V90> .
+}
+
+<V20> {
+    <V20> a ssn:System ;
+          s4syst:connectedTo <DX10/DosaxeConveyor/ConveyorMotor> .
+}
+
+<V90> {
+    <V90> a ssn:System ;
+          s4syst:connectedTo <DX10/DosaxeSilo/SiloMotor> .
 }
 
 <DX10/DosaxeSilo> {
@@ -36,7 +71,11 @@
                                       ssn:hasProperty <DX10/DosaxeSilo/SiloLimitSwitch/SwitchContactOn> .
 }
 
-# TODO other silo limit switch (other side of the axis)
+<DX10/DosaxeSilo/SiloLimitSwitch2> {
+    <DX10/DosaxeSilo/SiloLimitSwitch2> a ssn:System, pto:Presence_sensing_device ;
+                                      dct:identifier "S4" ;
+                                      ssn:hasProperty <DX10/DosaxeSilo/SiloLimitSwitch2/SwitchContactOn> .
+}
 
 <DX10/DosaxeSilo/SiloMotor> {
     <DX10/DosaxeSilo/SiloMotor> a ssn:System, pto:Electric_motor ;
